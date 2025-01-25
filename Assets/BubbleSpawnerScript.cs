@@ -9,13 +9,13 @@ public class BubbleSpawnerScript : MonoBehaviour
     int seconds;
     int minutes;
     int currentMinute = 1;
-    public double difficultyScalingMultiplier;
-    public double universalSpawnDelaySeconds = 0.5f;
+    public float difficultyScalingMultiplier;
+    public float universalSpawnDelaySeconds = 4f;
     //Default as 1x
 
-    public int initialSpawnCredits = 50;
-    double maxSpawnCredits;
-    int spawnCredits = 0;
+    public float initialSpawnCredits = 50;
+    float maxSpawnCredits = 50;
+    int spawnCredits = 40;
     public Vector3 ExcludeSpawnAreaXZ;
     //Would declare what area around the player bubbles cannot spawn too close to player
     Vector3 playerPosition;
@@ -27,6 +27,7 @@ public class BubbleSpawnerScript : MonoBehaviour
     public double gasBubbleWeight = 0.1;
     public double soapBubbleWeight = 0.1;
 
+    bool spawnOnCooldown = false;
 
     void Start()
     {
@@ -43,14 +44,12 @@ public class BubbleSpawnerScript : MonoBehaviour
         //Debug.Log("current minute " + currentMinute);
         if(seconds % 60 == 0 & seconds/60 == currentMinute & seconds != 0)
         {
-                difficultyScaler();
-                currentMinute += 1;
+            difficultyScaler();
+            currentMinute += 1;
         }
-        if (spawnCredits <= (maxSpawnCredits - 5))
+        if (spawnCredits <= (maxSpawnCredits) & spawnCredits >= 0 & spawnOnCooldown == false)
         {
             StartCoroutine(spawner());
-            
-            
         }
     }
 
@@ -63,14 +62,22 @@ public class BubbleSpawnerScript : MonoBehaviour
     {
         maxSpawnCredits = (maxSpawnCredits + 5) * difficultyScalingMultiplier;
         maxSpawnCredits = Mathf.Floor(maxSpawnCredits);
+        universalSpawnDelaySeconds -= 0.2f;
     }
 
     IEnumerator spawner()
     {
+       if (spawnCredits <= (maxSpawnCredits) & spawnOnCooldown == false)
+       {
+        spawnOnCooldown = true;
+        spawnCredits -= 1;
+        randomPositionGenerator();
+        yield return new WaitForSeconds(universalSpawnDelaySeconds);
+        spawnOnCooldown = false;
+       }
        //Instantiate(Bubble, randomPositionGenerator())
-       randomPositionGenerator();
-       spawnCredits -= 1;
-       yield return new WaitForSecondsRealtime(universalSpawnDelaySeconds);
+       
+
 
     }
 
@@ -80,7 +87,7 @@ public class BubbleSpawnerScript : MonoBehaviour
         float randomZ = Random.Range(ExcludeSpawnAreaXZ.z,-ExcludeSpawnAreaXZ.z);
         const int Y = 5;
 
-        Vector3 RandomPosition = new Vector3(randomX, Y, randomZ);
+        Vector3 RandomPosition = new Vector3((randomX +ExcludeSpawnAreaXZ.x), Y, randomZ);
         Debug.Log(RandomPosition);
         return RandomPosition;
     }
