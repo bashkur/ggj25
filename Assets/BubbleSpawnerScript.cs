@@ -11,6 +11,7 @@ public class BubbleSpawnerScript : MonoBehaviour
     int currentMinute = 1;
     public float difficultyScalingMultiplier;
     public float universalSpawnDelaySeconds = 4f;
+    public GameObject bubble;
     //Default as 1x
 
     public float initialSpawnCredits = 50;
@@ -69,15 +70,14 @@ public class BubbleSpawnerScript : MonoBehaviour
     {
        if (spawnCredits <= (maxSpawnCredits) & spawnOnCooldown == false)
        {
+        Instantiate(bubble, randomPositionGenerator(),Quaternion.identity);
         spawnOnCooldown = true;
         spawnCredits -= 1;
         randomPositionGenerator();
         yield return new WaitForSeconds(universalSpawnDelaySeconds);
         spawnOnCooldown = false;
        }
-       //Instantiate(Bubble, randomPositionGenerator())
        
-
 
     }
 
@@ -85,7 +85,7 @@ public class BubbleSpawnerScript : MonoBehaviour
     {
         float randomX = Random.Range(ExcludeSpawnAreaXZ.x,-ExcludeSpawnAreaXZ.x); 
         float randomZ = Random.Range(ExcludeSpawnAreaXZ.z,-ExcludeSpawnAreaXZ.z);
-        const int Y = 5;
+        const int Y = 3;
 
         Vector3 RandomPosition = new Vector3((randomX +ExcludeSpawnAreaXZ.x), Y, randomZ);
         Debug.Log(RandomPosition);
