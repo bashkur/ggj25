@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 7d529762be6bfea468aa3c3ec281b532
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - DashSound: {fileID: 8300000, guid: 725084a5ad40cc24a88220c7d24ac4fd, type: 3}
+  - LandingAudioClip: {instanceID: 0}
+  - CinemachineCameraTarget: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
