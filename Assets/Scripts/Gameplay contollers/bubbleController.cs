@@ -80,6 +80,7 @@ public class bubbleController : MonoBehaviour
         {
             spawnerCredits.spawnCredits +=10;
         }
+        Debug.Log(spawnerCredits.spawnCredits);
     }
 
 }

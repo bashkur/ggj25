@@ -58,7 +58,7 @@ public class BubbleSpawnerScript : MonoBehaviour
             difficultyScaler();
             currentMinute += 1;
         }
-        if (spawnCredits <= (maxSpawnCredits) & spawnOnCooldown == false)
+        if (spawnOnCooldown == false)
         {
             StartCoroutine(spawner());
         }
@@ -89,7 +89,9 @@ public class BubbleSpawnerScript : MonoBehaviour
             bubbleType = type3Bubble;
             spawnCredits -= 10;
         }
+        Debug.Log(spawnCredits);
         return bubbleType;    
+        
     }
 
     void difficultyScaler()
@@ -99,6 +101,7 @@ public class BubbleSpawnerScript : MonoBehaviour
         maxSpawnCredits = Mathf.Floor(maxSpawnCredits);
         //Debug.Log(maxSpawnCredits);
         spawnCredits += (int)(maxSpawnCredits-oldSpawnCredits);
+        Debug.Log("Max:" +maxSpawnCredits);
 
         if (universalSpawnDelaySeconds > 0)
         {
@@ -108,7 +111,7 @@ public class BubbleSpawnerScript : MonoBehaviour
 
     IEnumerator spawner()
     {
-       if (spawnCredits <= (maxSpawnCredits) & spawnOnCooldown == false)
+       if (spawnOnCooldown == false)
        {
         if (spawnCredits >= 0)
         {
