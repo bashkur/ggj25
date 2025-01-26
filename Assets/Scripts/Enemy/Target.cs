@@ -40,8 +40,8 @@ public class Target : MonoBehaviour, IDamageable
             
             if (health <= 0)
             {
-                Death();
                 FindObjectOfType<GameHandler>().AddScore(100);
+                Death();
             }
 
             UpdateHealthBar();
