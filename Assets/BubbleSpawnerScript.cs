@@ -12,11 +12,6 @@ public class BubbleSpawnerScript : MonoBehaviour
     public float difficultyScalingMultiplier;
     public float universalSpawnDelaySeconds = 3f;
     public GameObject bubble;
-    public GameObject powerUpBubble;
-    public GameObject type2Bubble;
-    public GameObject type3Bubble;
-    GameObject bubbleType;
-
     //Default as 1x
 
     public float initialSpawnCredits = 50;
@@ -32,8 +27,8 @@ public class BubbleSpawnerScript : MonoBehaviour
     
     public double normalBubbleWeight = 0.75;
     public double powerUpBubbleWeight = 0.05;
-    public double Type2BubbleWeight = 0.1;
-    public double Type3BubbleWeight = 0.1;
+    public double gasBubbleWeight = 0.1;
+    public double soapBubbleWeight = 0.1;
 
     bool spawnOnCooldown = false;
 
@@ -61,30 +56,9 @@ public class BubbleSpawnerScript : MonoBehaviour
         }
     }
 
-    GameObject bubbleTypeGenerator()
+    void bubbleTypeGenerator()
     {
-        float random = Random.Range(0f,1f);
-        if(random <= normalBubbleWeight)
-        {
-            bubbleType = bubble;
-            spawnCredits -= 1;
-        }
-        if(random <= normalBubbleWeight)
-        {
-            bubbleType = powerUpBubble;
-            spawnCredits -= 5;
-        }
-        else if (random <= (normalBubbleWeight + powerUpBubbleWeight))
-        {
-            bubbleType = type2Bubble;
-            spawnCredits -= 5;
-        }
-        else if (random <= normalBubbleWeight + (normalBubbleWeight + powerUpBubbleWeight + Type2BubbleWeight))
-        {
-            bubbleType = type3Bubble;
-            spawnCredits -= 10;
-        }
-        return bubbleType;    
+
     }
 
     void difficultyScaler()
@@ -101,8 +75,9 @@ public class BubbleSpawnerScript : MonoBehaviour
     {
        if (spawnCredits <= (maxSpawnCredits) & spawnOnCooldown == false)
        {
-        Instantiate(bubbleTypeGenerator(), randomPositionGenerator(), Quaternion.identity);
+        Instantiate(bubble, randomPositionGenerator(),Quaternion.identity);
         spawnOnCooldown = true;
+        spawnCredits -= 1;
         randomPositionGenerator();
         yield return new WaitForSeconds(universalSpawnDelaySeconds);
         spawnOnCooldown = false;

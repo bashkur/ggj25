@@ -151,15 +151,12 @@ MonoBehaviour:
   difficultyScalingMultiplier: 0
   universalSpawnDelaySeconds: 4
   bubble: {fileID: 7975488077205941556, guid: 4738c4683b4788b46be6c6633772af8e, type: 3}
-  powerUpBubble: {fileID: 1484183494642823121, guid: fe448a74d55eb774e8007d3f018f0a40, type: 3}
-  type2Bubble: {fileID: 1701043592007277898, guid: 846c7f28d9ed025489db35698acd7744, type: 3}
-  type3Bubble: {fileID: 411742438269941284, guid: 0db230905be10804c91eb7a3a8b48f3e, type: 3}
   initialSpawnCredits: 50
   ExcludeSpawnAreaXZ: {x: 5, y: 0, z: 5}
   normalBubbleWeight: 0.75
   powerUpBubbleWeight: 0.05
-  Type2BubbleWeight: 0.1
-  Type3BubbleWeight: 0.1
+  gasBubbleWeight: 0.1
+  soapBubbleWeight: 0.1
 --- !u!4 &681135257
 Transform:
   m_ObjectHideFlags: 0
