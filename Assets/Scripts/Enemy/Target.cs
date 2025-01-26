@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using UnityEngine.AI;
 public class Target : MonoBehaviour, IDamageable
     {
-        private float health = 100f;
+        public float health = 100f;
         public Slider healthBar;
         public Gradient gradient;
         public Image fill;
