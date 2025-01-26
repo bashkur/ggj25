@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6560714843690121730
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4239721129602457855}
+  - component: {fileID: 4441332388166499802}
+  m_Layer: 0
+  m_Name: Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4239721129602457855
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6560714843690121730}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4441332388166499802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6560714843690121730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73301641d42f1ed4c8e6d275213b2d53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  difficultyScalingMultiplier: 1
+  universalSpawnDelaySeconds: 3
+  bubble: {fileID: 7975488077205941556, guid: fa3bdb98b3551894491793ca0c3d014c, type: 3}
+  powerUpBubble: {fileID: 6123093582218311456, guid: 65e137b5f3d291141b7090d12e676e19, type: 3}
+  type2Bubble: {fileID: 6062529402787787733, guid: 6f37f27ecd34fe44aa9345867f268270, type: 3}
+  type3Bubble: {fileID: 3017813798896041483, guid: 6099ad693a9b4824da63e1544befdb75, type: 3}
+  initialSpawnCredits: 50
+  ExcludeSpawnAreaXZ: {x: 5, y: 0, z: 5}
+  normalBubbleWeight: 0.75
+  powerUpBubbleWeight: 0.05
+  Type2BubbleWeight: 0.1
+  Type3BubbleWeight: 0.1
