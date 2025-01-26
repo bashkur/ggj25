@@ -16,6 +16,6 @@ public class bubbleController : MonoBehaviour
     void Update()
     {
         bubblePosition = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z);
-        this.transform.position = Vector3.MoveTowards(bubblePosition, (new Vector3(playerPosition.x,3,playerPosition.z)), (speed * Time.deltaTime));
+        this.transform.position = Vector3.MoveTowards(bubblePosition, (new Vector3(playerPosition.x,1,playerPosition.z)), (speed * Time.deltaTime));
     }
 }

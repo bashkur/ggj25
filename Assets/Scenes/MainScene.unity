@@ -311,17 +311,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1699249223}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a10b1521fa6646c4f91af2a5e8bf1e02, type: 3}
+  m_Script: {fileID: 11500000, guid: 73301641d42f1ed4c8e6d275213b2d53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   difficultyScalingMultiplier: 0
-  universalSpawnDelaySeconds: 4
+  universalSpawnDelaySeconds: 3
   bubble: {fileID: 7975488077205941556, guid: fa3bdb98b3551894491793ca0c3d014c, type: 3}
-  powerUpBubble: {fileID: 1484183494642823121, guid: 1ff6c5a91ae1a4a4a8517b31408cca4c, type: 3}
-  type2Bubble: {fileID: 1701043592007277898, guid: fd4a0c406b63f9a46a05f4059ee524f6, type: 3}
-  type3Bubble: {fileID: 411742438269941284, guid: 791f3a582db8bda4c984ceecb6634236, type: 3}
+  powerUpBubble: {fileID: 6123093582218311456, guid: 65e137b5f3d291141b7090d12e676e19, type: 3}
+  type2Bubble: {fileID: 6062529402787787733, guid: 6f37f27ecd34fe44aa9345867f268270, type: 3}
+  type3Bubble: {fileID: 3017813798896041483, guid: 6099ad693a9b4824da63e1544befdb75, type: 3}
   initialSpawnCredits: 50
-  ExcludeSpawnAreaXZ: {x: 5, y: 0, z: 5}
+  ExcludeSpawnAreaXZ: {x: 3, y: 0, z: 3}
   normalBubbleWeight: 0.75
   powerUpBubbleWeight: 0.05
   Type2BubbleWeight: 0.1

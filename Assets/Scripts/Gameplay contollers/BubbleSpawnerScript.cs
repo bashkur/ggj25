@@ -115,7 +115,7 @@ public class BubbleSpawnerScript : MonoBehaviour
     {
         randomX = Random.Range(ExcludeSpawnAreaXZ.x,-ExcludeSpawnAreaXZ.x); 
         randomZ = Random.Range(ExcludeSpawnAreaXZ.z,-ExcludeSpawnAreaXZ.z);
-        const float Y = 0.5f;
+        const float Y = 1f;
 
         if (randomX >= 0)
         {
