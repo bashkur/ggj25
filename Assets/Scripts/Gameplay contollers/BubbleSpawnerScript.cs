@@ -10,12 +10,13 @@ public class BubbleSpawnerScript : MonoBehaviour
     int minutes;
     int currentMinute = 1;
     public float difficultyScalingMultiplier;
-    public float universalSpawnDelaySeconds = 3f;
+    public float universalSpawnDelaySeconds = 2f;
     public GameObject bubble;
     public GameObject powerUpBubble;
     public GameObject type2Bubble;
     public GameObject type3Bubble;
     GameObject bubbleType;
+    GameObject Player;
 
     //Default as 1x
 
@@ -39,14 +40,14 @@ public class BubbleSpawnerScript : MonoBehaviour
 
     void Start()
     {
-        randomPositionGenerator();
+        Player = GameObject.Find("PlayerArmature");
     }
 
     // Update is called once per frame
     void Update()
     {
         timer += Time.deltaTime;   
-
+        playerPosition = new Vector3(Player.transform.position.x, Player.transform.position.y, Player.transform.position.z);
         seconds = (int)timer;
         //Debug.Log("current second " + seconds);
         //Debug.Log("current minute " + currentMinute);
@@ -119,23 +120,23 @@ public class BubbleSpawnerScript : MonoBehaviour
 
         if (randomX >= 0)
         {
-            randomX = (Random.Range((ExcludeSpawnAreaXZ.x + 2),ExcludeSpawnAreaXZ.x) + ExcludeSpawnAreaXZ.x); 
+            randomX = (Random.Range((ExcludeSpawnAreaXZ.x + 2),ExcludeSpawnAreaXZ.x) + ExcludeSpawnAreaXZ.x + playerPosition.x); 
         }
         else
         {
-            randomX = (Random.Range((-ExcludeSpawnAreaXZ.x - 2),-ExcludeSpawnAreaXZ.x) - ExcludeSpawnAreaXZ.x); 
+            randomX = (Random.Range((-ExcludeSpawnAreaXZ.x - 2),-ExcludeSpawnAreaXZ.x) - ExcludeSpawnAreaXZ.x - playerPosition.x); 
         }
 
         if (randomZ > 0)
         {
-            randomZ = (Random.Range((ExcludeSpawnAreaXZ.z + 2),ExcludeSpawnAreaXZ.z) + ExcludeSpawnAreaXZ.z); 
+            randomZ = (Random.Range((ExcludeSpawnAreaXZ.z + 2),ExcludeSpawnAreaXZ.z) + ExcludeSpawnAreaXZ.z + playerPosition.z); 
         }
         else
         {
-            randomZ = (Random.Range((ExcludeSpawnAreaXZ.z - 2),ExcludeSpawnAreaXZ.z) - ExcludeSpawnAreaXZ.z);
+            randomZ = (Random.Range((ExcludeSpawnAreaXZ.z - 2),ExcludeSpawnAreaXZ.z) - ExcludeSpawnAreaXZ.z - playerPosition.z);
         }
 
-        Vector3 RandomPosition = new Vector3((randomX + ExcludeSpawnAreaXZ.x), Y, randomZ);
+        Vector3 RandomPosition = new Vector3((randomX + ExcludeSpawnAreaXZ.x + playerPosition.x), Y, (randomZ + ExcludeSpawnAreaXZ.z + playerPosition.z));
         Debug.Log(RandomPosition);
         return RandomPosition;
     }
