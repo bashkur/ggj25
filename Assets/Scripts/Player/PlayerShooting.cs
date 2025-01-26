@@ -82,7 +82,7 @@ public class PlayerShooting : MonoBehaviour
                 moveScript.muzzleTransform = muzzle;
             }
             
-            // AudioSource.PlayClipAtPoint(fireSound, muzzle.position, fireVolume);
+            AudioSource.PlayClipAtPoint(fireSound, muzzle.position, fireVolume);
             
             timeSinceLastShot = 0;
             // UpdateAmmoUI();

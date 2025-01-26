@@ -330,6 +330,7 @@ MonoBehaviour:
   BottomClamp: -30
   CameraAngleOverride: 0
   LockCameraPosition: 0
+  animIsShooting: 0
   _trail: {fileID: 4599701451096927784}
 --- !u!54 &3878248343856035090
 Rigidbody:
@@ -465,8 +466,8 @@ MonoBehaviour:
   maxDistance: 50
   canPierce: 0
   fireRate: 50
-  fireSound: {fileID: 0}
-  fireVolume: 0
+  fireSound: {fileID: 8300000, guid: d21a560dbd15f104ab581c8f39544247, type: 3}
+  fireVolume: 4
 --- !u!1 &576722769382587614
 GameObject:
   m_ObjectHideFlags: 0
