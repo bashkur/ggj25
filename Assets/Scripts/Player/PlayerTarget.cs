@@ -27,7 +27,7 @@ public class PlayerTarget : MonoBehaviour, IDamageable
     public void TakeDamage(float damage)
     {
         health -= damage;
-        AudioSource.PlayClipAtPoint(hitSound, transform.position, hitAudioVolume);
+        // AudioSource.PlayClipAtPoint(hitSound, transform.position, hitAudioVolume);
         if (health <= 0)
         {
             gameObject.SetActive(false);

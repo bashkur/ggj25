@@ -109,6 +109,7 @@ using UnityEngine.InputSystem;
         private int _animIDMotionSpeed;
         private int _animIDMoveX;
         private int _animIDMoveZ;
+        private int _animIDShoot;
 
         // Speed Trail
         public TrailRenderer _trail;
@@ -223,6 +224,9 @@ using UnityEngine.InputSystem;
             if (_input.shoot && shootInput != null)
             {
                 shootInput?.Invoke();
+                _animator.SetBool(_animIDShoot, true);
+                
+                Invoke(nameof(ResetShootBool), 0.2f);
             }
 
         }
@@ -236,6 +240,7 @@ using UnityEngine.InputSystem;
             _animIDMotionSpeed = Animator.StringToHash("MotionSpeed");
             _animIDMoveX = Animator.StringToHash("MoveX");
             _animIDMoveZ = Animator.StringToHash("MoveZ");
+            _animIDShoot = Animator.StringToHash("IsShooting");
         }
 
         private void GroundedCheck()
@@ -460,5 +465,10 @@ using UnityEngine.InputSystem;
             float y = (joystickInput.y + 1) / 2 * screenHeight;
 
             return new Vector2(x, y);
+        }
+        
+        private void ResetShootBool()
+        {
+            _animator.SetBool(_animIDShoot, false);
         }
     }

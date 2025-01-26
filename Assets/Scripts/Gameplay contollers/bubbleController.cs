@@ -1,3 +1,5 @@
+
+using Scenes.Alex.Scripts.Interfaces;
 using UnityEngine;
 
 public class bubbleController : MonoBehaviour
@@ -9,6 +11,7 @@ public class bubbleController : MonoBehaviour
     public string BubbleType;
     public float speed;
     public int CreditReturn;
+    private bool collided;
     
     public BubbleSpawnerScript spawnerCredits;
     public PlayerShooting playerScript;
@@ -32,6 +35,23 @@ public class bubbleController : MonoBehaviour
         //Debug.Log(playerPosition);
         this.transform.position = Vector3.MoveTowards(bubblePosition, (new Vector3(playerPosition.x,1.5f,playerPosition.z)), (speed * Time.deltaTime));
         //Debug.Log(playerPosition);
+    }
+    
+    void OnCollisionEnter(Collision co)
+    {
+        // Avoid self-collision checks
+        if (co.gameObject.CompareTag("Enemy") || collided)
+            return;
+
+        collided = true;
+
+        // Apply damage if the hit object is damageable
+        IDamageable damageable = co.gameObject.GetComponent<IDamageable>();
+        damageable?.TakeDamage(1000);
+
+
+        // Destroy the entire projectile
+        Destroy(gameObject);
     }
 
         void OnDestroy()
