@@ -44,15 +44,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73301641d42f1ed4c8e6d275213b2d53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  difficultyScalingMultiplier: 1
+  difficultyScalingMultiplier: 1.5
   universalSpawnDelaySeconds: 3
   bubble: {fileID: 7975488077205941556, guid: fa3bdb98b3551894491793ca0c3d014c, type: 3}
   powerUpBubble: {fileID: 6123093582218311456, guid: 65e137b5f3d291141b7090d12e676e19, type: 3}
   type2Bubble: {fileID: 6062529402787787733, guid: 6f37f27ecd34fe44aa9345867f268270, type: 3}
   type3Bubble: {fileID: 3017813798896041483, guid: 6099ad693a9b4824da63e1544befdb75, type: 3}
-  initialSpawnCredits: 50
+  spawnCredits: 50
   ExcludeSpawnAreaXZ: {x: 5, y: 0, z: 5}
-  normalBubbleWeight: 0.75
-  powerUpBubbleWeight: 0.05
+  normalBubbleWeight: 0.7
+  powerUpBubbleWeight: 0.1
   Type2BubbleWeight: 0.1
   Type3BubbleWeight: 0.1

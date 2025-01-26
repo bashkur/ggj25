@@ -22,9 +22,9 @@ public class BubbleSpawnerScript : MonoBehaviour
 
     //Default as 1x
 
-    public float initialSpawnCredits = 50;
-    float maxSpawnCredits = 50;
-    public int spawnCredits = 40;
+
+    float maxSpawnCredits = 50f;
+    public int spawnCredits = 50;
     public Vector3 ExcludeSpawnAreaXZ;
     //Would declare what area around the player bubbles cannot spawn too close to player
     Vector3 playerPosition;
@@ -62,29 +62,29 @@ public class BubbleSpawnerScript : MonoBehaviour
         {
             StartCoroutine(spawner());
         }
-        Debug.Log(spawnCredits);
+        //Debug.Log(spawnCredits);
     }
 
     GameObject bubbleTypeGenerator()
     {
         float random = Random.Range(0f,1f);
         //Debug.Log(random);
-        if(random <= normalBubbleWeight)
+        if(random <= normalBubbleWeight & spawnCredits >= 1)
         {
             bubbleType = bubble;
             spawnCredits -= 1;
         }
-        else if(random <= normalBubbleWeight + powerUpBubbleWeight)
+        else if(random <= normalBubbleWeight + powerUpBubbleWeight & spawnCredits >= 1)
         {
             bubbleType = powerUpBubble;
             spawnCredits -= 1;
         }
-        else if (random <= (normalBubbleWeight + powerUpBubbleWeight + Type2BubbleWeight))
+        else if (random <= (normalBubbleWeight + powerUpBubbleWeight + Type2BubbleWeight) & spawnCredits >= 5)
         {
             bubbleType = type2Bubble;
             spawnCredits -= 5;
         }
-        else if (random <= (normalBubbleWeight + powerUpBubbleWeight + Type2BubbleWeight + Type3BubbleWeight))
+        else if (random <= (normalBubbleWeight + powerUpBubbleWeight + Type2BubbleWeight + Type3BubbleWeight) & spawnCredits >= 10)
         {
             bubbleType = type3Bubble;
             spawnCredits -= 10;
@@ -94,9 +94,12 @@ public class BubbleSpawnerScript : MonoBehaviour
 
     void difficultyScaler()
     {
-        maxSpawnCredits = (maxSpawnCredits + 5) * difficultyScalingMultiplier;
+        float oldSpawnCredits = maxSpawnCredits;
+        maxSpawnCredits = (maxSpawnCredits + 10) * difficultyScalingMultiplier;
         maxSpawnCredits = Mathf.Floor(maxSpawnCredits);
-        spawnCredits = (int)maxSpawnCredits;
+        Debug.Log(maxSpawnCredits);
+        spawnCredits += (int)(maxSpawnCredits-oldSpawnCredits);
+
         if (universalSpawnDelaySeconds > 0)
         {
             universalSpawnDelaySeconds -= 0.2f;
@@ -111,6 +114,7 @@ public class BubbleSpawnerScript : MonoBehaviour
         {
             Instantiate(bubbleTypeGenerator(), randomPositionGenerator(), Quaternion.identity);
         }
+        Debug.Log("Works");
         spawnOnCooldown = true;
         randomPositionGenerator();
         yield return new WaitForSeconds(universalSpawnDelaySeconds);
