@@ -450,7 +450,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: BasicBubble
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3443938915557998303, guid: fa3bdb98b3551894491793ca0c3d014c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
