@@ -103,9 +103,17 @@ public class BubbleSpawnerScript : MonoBehaviour
         spawnCredits += (int)(maxSpawnCredits-oldSpawnCredits);
         Debug.Log("Max:" +maxSpawnCredits);
 
-        if (universalSpawnDelaySeconds > 0)
+        if (universalSpawnDelaySeconds > 1)
         {
-            universalSpawnDelaySeconds -= 0.2f;
+            universalSpawnDelaySeconds -= 0.25f;
+        }
+        else if (universalSpawnDelaySeconds >= .5)
+        {
+            universalSpawnDelaySeconds -= 0.1f;
+        }
+        else if (universalSpawnDelaySeconds > .20)
+        {
+            universalSpawnDelaySeconds -= 0.05f;
         }
     }
 
