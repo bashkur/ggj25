@@ -111,6 +111,8 @@ using UnityEngine.InputSystem;
         private int _animIDMoveZ;
         private int _animIDShoot;
 
+        public bool animIsShooting;
+
         // Speed Trail
         public TrailRenderer _trail;
 
@@ -224,10 +226,8 @@ using UnityEngine.InputSystem;
             if (_input.shoot && shootInput != null)
             {
                 shootInput?.Invoke();
-                _animator.SetBool(_animIDShoot, true);
-                
-                Invoke(nameof(ResetShootBool), 0.2f);
             }
+            _animator.SetBool(_animIDShoot, animIsShooting);
 
         }
         
@@ -467,8 +467,4 @@ using UnityEngine.InputSystem;
             return new Vector2(x, y);
         }
         
-        private void ResetShootBool()
-        {
-            _animator.SetBool(_animIDShoot, false);
-        }
     }

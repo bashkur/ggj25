@@ -39,6 +39,7 @@ public class bubbleController : MonoBehaviour
     
     void OnCollisionEnter(Collision co)
     {
+        Debug.Log("Collison!!!!");
         // Avoid self-collision checks
         if (co.gameObject.CompareTag("Enemy") || collided)
             return;

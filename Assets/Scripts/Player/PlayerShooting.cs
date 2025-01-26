@@ -12,6 +12,7 @@ public class PlayerShooting : MonoBehaviour
     private int layerPlayerBullet;
     private AudioClip[] reloadSounds;
     private float[] reloadTimings;
+    private ThirdPersonControllerTwinStick controller;
 
     float timeSinceLastShot;
 
@@ -38,6 +39,7 @@ public class PlayerShooting : MonoBehaviour
     private void Start()
     {
         ThirdPersonControllerTwinStick.shootInput += Fire;
+        controller = GetComponent<ThirdPersonControllerTwinStick>();
         
         // currentAmmoText = GameObject.Find("CurrentAmmoCount").GetComponent<TextMeshProUGUI>();
     }
@@ -64,6 +66,10 @@ public class PlayerShooting : MonoBehaviour
             Rigidbody bulletRigidbody = bullet.GetComponent<Rigidbody>();
             ProjectileMoveScript2 moveScript = bullet.GetComponent<ProjectileMoveScript2>();
             bullet.layer = layerPlayerBullet;
+
+            controller.animIsShooting = true;
+            Invoke(nameof(ResetShootBool), 0.2f);
+            
 
 
             if (bulletRigidbody != null)
@@ -92,5 +98,10 @@ public class PlayerShooting : MonoBehaviour
     private void OnDestroy()
     {
         ThirdPersonControllerTwinStick.shootInput -= Fire;
+    }
+    
+    private void ResetShootBool()
+    {
+        controller.animIsShooting = false;
     }
 }

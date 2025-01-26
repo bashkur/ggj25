@@ -809,7 +809,6 @@ MonoBehaviour:
   powerUpBubble: {fileID: 6123093582218311456, guid: 65e137b5f3d291141b7090d12e676e19, type: 3}
   type2Bubble: {fileID: 6062529402787787733, guid: 6f37f27ecd34fe44aa9345867f268270, type: 3}
   type3Bubble: {fileID: 3017813798896041483, guid: 6099ad693a9b4824da63e1544befdb75, type: 3}
-  initialSpawnCredits: 50
   spawnCredits: 40
   ExcludeSpawnAreaXZ: {x: 3, y: 0, z: 3}
   normalBubbleWeight: 0.75
