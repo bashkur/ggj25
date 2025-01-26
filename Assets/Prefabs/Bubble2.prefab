@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: speed
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 3443938915557998303, guid: fa3bdb98b3551894491793ca0c3d014c, type: 3}
+      propertyPath: BubbleType
+      value: Bubble2
+      objectReference: {fileID: 0}
     - target: {fileID: 6628529391344391193, guid: fa3bdb98b3551894491793ca0c3d014c, type: 3}
       propertyPath: health
       value: 20

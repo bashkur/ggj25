@@ -300,11 +300,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveSpeed: 9
   SprintSpeed: 10.6
-  DashSpeed: 10.67
-  DashSound: {fileID: 8300000, guid: e4c9320ad3d88724f8844e7bb2d7523a, type: 3}
-  DashVolume: 1
-  DashLength: 0.6
-  DashCoolDown: 0.5
   RotationSmoothTime: 0.12
   SpeedChangeRate: 10
   LandingAudioClip: {fileID: 8300000, guid: ff697d3070687ce4583faa0561a145a2, type: 3}
@@ -469,7 +464,7 @@ MonoBehaviour:
   bulletSpeed: 50
   maxDistance: 50
   canPierce: 0
-  fireRate: 600
+  fireRate: 50
   fireSound: {fileID: 0}
   fireVolume: 0
 --- !u!1 &576722769382587614

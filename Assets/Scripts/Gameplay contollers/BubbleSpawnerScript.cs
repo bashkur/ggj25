@@ -17,12 +17,14 @@ public class BubbleSpawnerScript : MonoBehaviour
     public GameObject type3Bubble;
     GameObject bubbleType;
     GameObject Player;
+    float X;
+    float Z;
 
     //Default as 1x
 
     public float initialSpawnCredits = 50;
     float maxSpawnCredits = 50;
-    int spawnCredits = 40;
+    public int spawnCredits = 40;
     public Vector3 ExcludeSpawnAreaXZ;
     //Would declare what area around the player bubbles cannot spawn too close to player
     Vector3 playerPosition;
@@ -60,27 +62,29 @@ public class BubbleSpawnerScript : MonoBehaviour
         {
             StartCoroutine(spawner());
         }
+        //Debug.Log(spawnCredits);
     }
 
     GameObject bubbleTypeGenerator()
     {
         float random = Random.Range(0f,1f);
+        //Debug.Log(random);
         if(random <= normalBubbleWeight)
         {
             bubbleType = bubble;
             spawnCredits -= 1;
         }
-        if(random <= normalBubbleWeight)
+        else if(random <= normalBubbleWeight + powerUpBubbleWeight)
         {
             bubbleType = powerUpBubble;
-            spawnCredits -= 5;
+            spawnCredits -= 1;
         }
-        else if (random <= (normalBubbleWeight + powerUpBubbleWeight))
+        else if (random <= (normalBubbleWeight + powerUpBubbleWeight + Type2BubbleWeight))
         {
             bubbleType = type2Bubble;
             spawnCredits -= 5;
         }
-        else if (random <= normalBubbleWeight + (normalBubbleWeight + powerUpBubbleWeight + Type2BubbleWeight))
+        else if (random <= (normalBubbleWeight + powerUpBubbleWeight + Type2BubbleWeight + Type3BubbleWeight))
         {
             bubbleType = type3Bubble;
             spawnCredits -= 10;
@@ -114,30 +118,35 @@ public class BubbleSpawnerScript : MonoBehaviour
 
     Vector3 randomPositionGenerator()
     {
-        randomX = Random.Range(ExcludeSpawnAreaXZ.x,-ExcludeSpawnAreaXZ.x); 
-        randomZ = Random.Range(ExcludeSpawnAreaXZ.z,-ExcludeSpawnAreaXZ.z);
+        randomX = Random.Range(-ExcludeSpawnAreaXZ.x,ExcludeSpawnAreaXZ.x); 
+        //Debug.Log(randomX);
+        randomZ = Random.Range(-ExcludeSpawnAreaXZ.z,ExcludeSpawnAreaXZ.z);
         const float Y = 1f;
 
-        if (randomX >= 0)
+        if (randomX > 0)
         {
-            randomX = (Random.Range((ExcludeSpawnAreaXZ.x + 2),ExcludeSpawnAreaXZ.x) + ExcludeSpawnAreaXZ.x + playerPosition.x); 
+            randomX = (Random.Range((ExcludeSpawnAreaXZ.x + 10),ExcludeSpawnAreaXZ.x) + ExcludeSpawnAreaXZ.x); 
+            X = 1f;
         }
         else
         {
-            randomX = (Random.Range((-ExcludeSpawnAreaXZ.x - 2),-ExcludeSpawnAreaXZ.x) - ExcludeSpawnAreaXZ.x - playerPosition.x); 
+            randomX = (Random.Range((-ExcludeSpawnAreaXZ.x - 10),-ExcludeSpawnAreaXZ.x) - ExcludeSpawnAreaXZ.x); 
+            X = -1f;
         }
 
         if (randomZ > 0)
         {
-            randomZ = (Random.Range((ExcludeSpawnAreaXZ.z + 2),ExcludeSpawnAreaXZ.z) + ExcludeSpawnAreaXZ.z + playerPosition.z); 
+            randomZ = (Random.Range((ExcludeSpawnAreaXZ.z + 10),ExcludeSpawnAreaXZ.z) + ExcludeSpawnAreaXZ.z); 
+            Z = 1f;
         }
         else
         {
-            randomZ = (Random.Range((ExcludeSpawnAreaXZ.z - 2),ExcludeSpawnAreaXZ.z) - ExcludeSpawnAreaXZ.z - playerPosition.z);
+            randomZ = (Random.Range((ExcludeSpawnAreaXZ.z - 10),ExcludeSpawnAreaXZ.z) - ExcludeSpawnAreaXZ.z);
+            Z = -1f;
         }
 
-        Vector3 RandomPosition = new Vector3((randomX + ExcludeSpawnAreaXZ.x + playerPosition.x), Y, (randomZ + ExcludeSpawnAreaXZ.z + playerPosition.z));
-        Debug.Log(RandomPosition);
+        Vector3 RandomPosition = new Vector3((randomX + ((ExcludeSpawnAreaXZ.x)*X)), Y, (randomZ + ((ExcludeSpawnAreaXZ.z)*Z)));
+        //Debug.Log(RandomPosition);
         return RandomPosition;
     }
 }

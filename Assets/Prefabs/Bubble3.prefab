@@ -86,4 +86,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac5ecc865e6ae0b45b7510dd87084912, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BubbleType: Bubble3
   speed: 2
+  CreditReturn: 0
+  spawnerCredits: {fileID: 0}
