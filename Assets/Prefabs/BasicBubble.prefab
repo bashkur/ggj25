@@ -128,6 +128,7 @@ MonoBehaviour:
   BubbleType: BasicBubble
   speed: 3
   CreditReturn: 0
+  popSounds: {fileID: 8300000, guid: cb73f419d6899874198d3df011f7b01c, type: 3}
   spawnerCredits: {fileID: 0}
   playerScript: {fileID: 0}
 --- !u!54 &3662677457995626008

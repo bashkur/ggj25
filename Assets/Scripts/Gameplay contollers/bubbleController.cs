@@ -13,6 +13,7 @@ public class bubbleController : MonoBehaviour
     public int CreditReturn;
     private bool collided;
     
+    public AudioClip popSounds;
     public BubbleSpawnerScript spawnerCredits;
     public PlayerShooting playerScript;
     //GameObject Player = GameObject.Find("Player");
@@ -24,6 +25,7 @@ public class bubbleController : MonoBehaviour
         playerScript = Player.GetComponent<PlayerShooting>();
         
         spawnerCredits = GameObject.Find("Spawner").GetComponent<BubbleSpawnerScript>();
+        AudioSource pop = GetComponent<AudioSource>();
         //playerPosition = new Vector3(Player.transform.position);
     }
 
@@ -39,7 +41,7 @@ public class bubbleController : MonoBehaviour
     
     void OnCollisionEnter(Collision co)
     {
-        Debug.Log("Collison!!!!");
+        
         // Avoid self-collision checks
         if (co.gameObject.CompareTag("Enemy") || collided)
             return;
@@ -57,6 +59,8 @@ public class bubbleController : MonoBehaviour
 
         void OnDestroy()
     {
+        AudioSource.PlayClipAtPoint(popSounds, transform.position, 100);
+
         //Debug.Log("Deleted " + BubbleType);
         if(this.BubbleType == "BasicBubble")
         {
@@ -78,16 +82,4 @@ public class bubbleController : MonoBehaviour
         }
     }
 
-            private void onTriggerEnter(Collider other)
-        {
-            if(other.tag == "Player")
-            {
-                Debug.Log("Works");
-                Destroy(this);
-            }     
-            else
-            {
-                Debug.Log("doesnt work");   
-            }
-        }
 }
