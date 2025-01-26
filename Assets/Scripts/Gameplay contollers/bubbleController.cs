@@ -9,13 +9,17 @@ public class bubbleController : MonoBehaviour
     public string BubbleType;
     public float speed;
     public int CreditReturn;
+    
     public BubbleSpawnerScript spawnerCredits;
+    public PlayerShooting playerScript;
     //GameObject Player = GameObject.Find("Player");
     //Vector3 playerPosition = new Vector3(Player.position.transform.x,Player.position.transform.y,Player.position.transform.z);
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         Player = GameObject.Find("PlayerArmature");
+        playerScript = Player.GetComponent<PlayerShooting>();
+        
         spawnerCredits = GameObject.Find("Spawner").GetComponent<BubbleSpawnerScript>();
         //playerPosition = new Vector3(Player.transform.position);
     }
@@ -40,15 +44,16 @@ public class bubbleController : MonoBehaviour
         }
         else if(BubbleType == "powerUpBubble")
         {
-            GameObject.Find("Spawner").GetComponent<BubbleSpawnerScript>().spawnCredits +=1;
+            spawnerCredits.spawnCredits +=1;
+            playerScript.fireRate += 5;
         }
         else if(BubbleType == "Bubble2")
         {
-            GameObject.Find("Spawner").GetComponent<BubbleSpawnerScript>().spawnCredits +=5;
+            spawnerCredits.spawnCredits +=5;
         }
             else if(BubbleType == "Bubble3")
         {
-            GameObject.Find("Spawner").GetComponent<BubbleSpawnerScript>().spawnCredits +=10;
+            spawnerCredits.spawnCredits +=10;
         }
     }
 }

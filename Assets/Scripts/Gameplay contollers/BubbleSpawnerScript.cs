@@ -33,8 +33,8 @@ public class BubbleSpawnerScript : MonoBehaviour
     
     
     
-    public double normalBubbleWeight = 0.75;
-    public double powerUpBubbleWeight = 0.05;
+    public double normalBubbleWeight = 0.7;
+    public double powerUpBubbleWeight = 0.1;
     public double Type2BubbleWeight = 0.1;
     public double Type3BubbleWeight = 0.1;
 
@@ -58,11 +58,11 @@ public class BubbleSpawnerScript : MonoBehaviour
             difficultyScaler();
             currentMinute += 1;
         }
-        if (spawnCredits <= (maxSpawnCredits) & spawnCredits >= 0 & spawnOnCooldown == false)
+        if (spawnCredits <= (maxSpawnCredits) & spawnOnCooldown == false)
         {
             StartCoroutine(spawner());
         }
-        //Debug.Log(spawnCredits);
+        Debug.Log(spawnCredits);
     }
 
     GameObject bubbleTypeGenerator()
@@ -96,6 +96,7 @@ public class BubbleSpawnerScript : MonoBehaviour
     {
         maxSpawnCredits = (maxSpawnCredits + 5) * difficultyScalingMultiplier;
         maxSpawnCredits = Mathf.Floor(maxSpawnCredits);
+        spawnCredits = (int)maxSpawnCredits;
         if (universalSpawnDelaySeconds > 0)
         {
             universalSpawnDelaySeconds -= 0.2f;
@@ -106,7 +107,10 @@ public class BubbleSpawnerScript : MonoBehaviour
     {
        if (spawnCredits <= (maxSpawnCredits) & spawnOnCooldown == false)
        {
-        Instantiate(bubbleTypeGenerator(), randomPositionGenerator(), Quaternion.identity);
+        if (spawnCredits >= 0)
+        {
+            Instantiate(bubbleTypeGenerator(), randomPositionGenerator(), Quaternion.identity);
+        }
         spawnOnCooldown = true;
         randomPositionGenerator();
         yield return new WaitForSeconds(universalSpawnDelaySeconds);
