@@ -10,7 +10,7 @@ public class BubbleSpawnerScript : MonoBehaviour
     int minutes;
     int currentMinute = 1;
     public float difficultyScalingMultiplier;
-    public float universalSpawnDelaySeconds = 4f;
+    public float universalSpawnDelaySeconds = 3f;
     public GameObject bubble;
     //Default as 1x
 
@@ -20,6 +20,8 @@ public class BubbleSpawnerScript : MonoBehaviour
     public Vector3 ExcludeSpawnAreaXZ;
     //Would declare what area around the player bubbles cannot spawn too close to player
     Vector3 playerPosition;
+    float randomX;
+    float randomZ;
     
     
     
@@ -63,7 +65,10 @@ public class BubbleSpawnerScript : MonoBehaviour
     {
         maxSpawnCredits = (maxSpawnCredits + 5) * difficultyScalingMultiplier;
         maxSpawnCredits = Mathf.Floor(maxSpawnCredits);
-        universalSpawnDelaySeconds -= 0.2f;
+        if (universalSpawnDelaySeconds > 0)
+        {
+            universalSpawnDelaySeconds -= 0.2f;
+        }
     }
 
     IEnumerator spawner()
@@ -83,11 +88,29 @@ public class BubbleSpawnerScript : MonoBehaviour
 
     Vector3 randomPositionGenerator()
     {
-        float randomX = Random.Range(ExcludeSpawnAreaXZ.x,-ExcludeSpawnAreaXZ.x); 
-        float randomZ = Random.Range(ExcludeSpawnAreaXZ.z,-ExcludeSpawnAreaXZ.z);
+        randomX = Random.Range(ExcludeSpawnAreaXZ.x,-ExcludeSpawnAreaXZ.x); 
+        randomZ = Random.Range(ExcludeSpawnAreaXZ.z,-ExcludeSpawnAreaXZ.z);
         const int Y = 3;
 
-        Vector3 RandomPosition = new Vector3((randomX +ExcludeSpawnAreaXZ.x), Y, randomZ);
+        if (randomX >= 0)
+        {
+            randomX = (Random.Range((ExcludeSpawnAreaXZ.x + 2),ExcludeSpawnAreaXZ.x) + ExcludeSpawnAreaXZ.x); 
+        }
+        else
+        {
+            randomX = (Random.Range((-ExcludeSpawnAreaXZ.x - 2),-ExcludeSpawnAreaXZ.x) - ExcludeSpawnAreaXZ.x); 
+        }
+
+        if (randomZ > 0)
+        {
+            randomZ = (Random.Range((ExcludeSpawnAreaXZ.z + 2),ExcludeSpawnAreaXZ.z) + ExcludeSpawnAreaXZ.z); 
+        }
+        else
+        {
+            randomZ = (Random.Range((ExcludeSpawnAreaXZ.z - 2),ExcludeSpawnAreaXZ.z) - ExcludeSpawnAreaXZ.z);
+        }
+
+        Vector3 RandomPosition = new Vector3((randomX + ExcludeSpawnAreaXZ.x), Y, randomZ);
         Debug.Log(RandomPosition);
         return RandomPosition;
     }
