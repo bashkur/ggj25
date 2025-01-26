@@ -97,7 +97,7 @@ public class BubbleSpawnerScript : MonoBehaviour
         float oldSpawnCredits = maxSpawnCredits;
         maxSpawnCredits = (maxSpawnCredits + 10) * difficultyScalingMultiplier;
         maxSpawnCredits = Mathf.Floor(maxSpawnCredits);
-        Debug.Log(maxSpawnCredits);
+        //Debug.Log(maxSpawnCredits);
         spawnCredits += (int)(maxSpawnCredits-oldSpawnCredits);
 
         if (universalSpawnDelaySeconds > 0)
@@ -114,7 +114,7 @@ public class BubbleSpawnerScript : MonoBehaviour
         {
             Instantiate(bubbleTypeGenerator(), randomPositionGenerator(), Quaternion.identity);
         }
-        Debug.Log("Works");
+        //Debug.Log("Works");
         spawnOnCooldown = true;
         randomPositionGenerator();
         yield return new WaitForSeconds(universalSpawnDelaySeconds);

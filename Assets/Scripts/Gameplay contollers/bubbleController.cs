@@ -56,4 +56,17 @@ public class bubbleController : MonoBehaviour
             spawnerCredits.spawnCredits +=10;
         }
     }
+
+            private void onTriggerEnter(Collider other)
+        {
+            if(other.tag == "Player")
+            {
+                Debug.Log("Works");
+                Destroy(this);
+            }     
+            else
+            {
+                Debug.Log("doesnt work");   
+            }
+        }
 }
