@@ -25,22 +25,7 @@ using UnityEngine.InputSystem;
 
         [Tooltip("Sprint speed of the character in m/s")]
         public float SprintSpeed = 5.335f;
-        
-        [Tooltip("Dash speed of the character in m")]
-        public float DashSpeed = 10.67f;
 
-        [Tooltip("Sound Effect for the Dash")] 
-        public AudioClip DashSound;
-
-        [Tooltip("Volume of the Dash Sound Effect")]
-        public float DashVolume = 1f;
-        
-        [Tooltip("Dash length of the character in s")]
-        public float DashLength = 1f;
-        
-        [Tooltip("Dash cooldown of the character in s")]
-        public float DashCoolDown = .50f;
-        
         [Tooltip("How fast the character turns to face movement direction")]
         [Range(0.0f, 0.3f)]
         public float RotationSmoothTime = 0.12f;
@@ -383,30 +368,10 @@ using UnityEngine.InputSystem;
                 {
                     _verticalVelocity = -2f;
                 }
-
-                // Jump
-                if (_input.jump && _jumpTimeoutDelta <= 0.0f)
-                {
-                    // the square root of H * -2 * G = how much velocity needed to reach desired height
-                    _verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
-
-                    // update animator if using character
-                    if (_hasAnimator)
-                    {
-                        _animator.SetBool(_animIDJump, true);
-                    }
-                }
-
-                // jump timeout
-                if (_jumpTimeoutDelta >= 0.0f)
-                {
-                    _jumpTimeoutDelta -= Time.deltaTime;
-                }
+                
             }
             else
             {
-                // reset the jump timeout timer
-                _jumpTimeoutDelta = JumpTimeout;
 
                 // fall timeout
                 if (_fallTimeoutDelta >= 0.0f)

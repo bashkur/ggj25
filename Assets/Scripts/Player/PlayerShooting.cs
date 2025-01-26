@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Gun : MonoBehaviour
+public class PlayerShooting : MonoBehaviour
 {
     [SerializeField] private Transform muzzle;
     
