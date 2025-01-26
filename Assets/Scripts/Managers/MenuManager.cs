@@ -1,58 +1,46 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Managers
+public class MenuManager : MonoBehaviour
 {
-    public class MenuManager : MonoBehaviour
+    public GameObject splashScreen;
+    public GameObject mainMenu;
+    public GameObject creditsScreen;
+
+
+    private void Awake()
     {
-        public static MenuManager Instance;
-        
-        public GameObject splashScreen;
-        public GameObject mainMenu;
-        public GameObject creditsScreen;
-
-
-        private void Awake()
+        if (SceneManager.GetActiveScene().buildIndex == 0)
         {
-            if (Instance != null)
-            {
-                Destroy(this.gameObject);
-                return;
-            }
-            Instance = this;
-            
-            if (SceneManager.GetActiveScene().buildIndex == 0)
-            {
-                ShowSplashScreen();
-            }
+            ShowSplashScreen();
         }
-
-        private void ShowSplashScreen()
-        {
-            splashScreen.SetActive(true);
-            mainMenu.SetActive(false);
-            creditsScreen.SetActive(false);
-            
-            Debug.Log("ShowSplashScreen");
-        }
-
-        public void ShowMainMenu()
-        {
-            mainMenu.SetActive(true);
-            splashScreen.SetActive(false);
-            creditsScreen.SetActive(false);
-            
-            Debug.Log("ShowMainMenu");
-        }
-        
-        public void ShowCredits()
-        {
-            creditsScreen.SetActive(true);
-            splashScreen.SetActive(false);
-            mainMenu.SetActive(false);
-            
-            Debug.Log("ShowCredits");
-        }
-        
     }
+
+    private void ShowSplashScreen()
+    {
+        splashScreen.SetActive(true);
+        mainMenu.SetActive(false);
+        creditsScreen.SetActive(false);
+        
+        Debug.Log("ShowSplashScreen");
+    }
+
+    public void ShowMainMenu()
+    {
+        mainMenu.SetActive(true);
+        splashScreen.SetActive(false);
+        creditsScreen.SetActive(false);
+        
+        Debug.Log("ShowMainMenu");
+    }
+    
+    public void ShowCredits()
+    {
+        creditsScreen.SetActive(true);
+        splashScreen.SetActive(false);
+        mainMenu.SetActive(false);
+        
+        Debug.Log("ShowCredits");
+    }
+    
 }
