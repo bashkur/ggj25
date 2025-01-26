@@ -258,9 +258,6 @@ MonoBehaviour:
   menuScene: {fileID: 102900000, guid: 55f449bb9e9ddbd45a6cf480b9c4aee2, type: 3}
   gameScene: {fileID: 102900000, guid: 8095098b61ac72d44b932bd8c22bac70, type: 3}
   leaderboardScene: {fileID: 102900000, guid: 97781c132ad863046a391cdd1f259a6b, type: 3}
-  splashScreen: {fileID: 7105421791474126737}
-  mainMenu: {fileID: 4012740743773045891}
-  creditsScreen: {fileID: 4053736063336572315}
 --- !u!114 &118345048167560297
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -311,7 +308,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3b5e14f1a66e13e449451719f1494f09, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c65d85306ef5fbc4bb971d993e8b4c9e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
